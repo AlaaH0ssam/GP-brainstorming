@@ -1,11 +1,10 @@
 {
   "$schema": "https://railway.app/railway.schema.json",
   "build": {
-    "builder": "NIXPACKS",
-    "watchPatterns": ["Graduation-Ideas/client/**"]
+    "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "npm run start",
+    "startCommand": "npm run preview -- --host 0.0.0.0 --port $PORT",
     "numReplicas": 1
   }
 }
