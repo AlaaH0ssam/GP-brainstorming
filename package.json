@@ -1,0 +1,7 @@
+{
+    "name": "gp-brainstorming-root",
+    "version": "1.0.0",
+    "scripts": {
+        "build": "npm --prefix Graduation-Ideas/client install && npm --prefix Graduation-Ideas/client run build"
+    }
+}
