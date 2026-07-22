@@ -13,7 +13,7 @@ function Home() {
   const [search, setSearch] = useState("");
   const [editingIdea, setEditingIdea] = useState<Idea | null>(null);
 
-useEffect(() => {
+  useEffect(() => {
     api.get("/ideas")
       .then((res) => setAllIdeas(res.data))
       .catch((err) => console.log(err));
@@ -97,7 +97,7 @@ useEffect(() => {
   );
 
   return (
-    <>
+    <div className="min-h-screen bg-gray-950 text-white pb-10">
       <SearchBar
         search={search}
         setSearch={setSearch}
@@ -109,42 +109,49 @@ useEffect(() => {
             setEditingIdea(null);
             setShowModal(true);
           }}
-          className="rounded-lg bg-blue-600 px-5 py-2 text-white hover:bg-blue-700"
+          className="rounded-lg bg-blue-600 px-5 py-2 text-white hover:bg-blue-700 transition-colors"
         >
           + Add Idea
         </button>
       </div>
 
-      <div className="mx-auto mt-8 grid max-w-7xl grid-cols-3 gap-6 px-6">
-        <BoardColumn
-          title="Inbox"
-          ideas={filteredIdeas.filter(
-            (idea) => idea.status === "Inbox"
-          )}
-          onDelete={deleteIdea}
-          onEdit={editIdea}
-          onVote={voteIdea}
-        />
+      {}
+      <div className="mx-auto mt-8 flex md:grid md:grid-cols-3 gap-6 px-6 overflow-x-auto pb-4 w-full max-w-7xl">
+        <div className="min-w-[300px] md:min-w-0 flex-1">
+          <BoardColumn
+            title="Inbox"
+            ideas={filteredIdeas.filter(
+              (idea) => idea.status === "Inbox"
+            )}
+            onDelete={deleteIdea}
+            onEdit={editIdea}
+            onVote={voteIdea}
+          />
+        </div>
 
-        <BoardColumn
-          title="Research"
-          ideas={filteredIdeas.filter(
-            (idea) => idea.status === "Research"
-          )}
-          onDelete={deleteIdea}
-          onEdit={editIdea}
-          onVote={voteIdea}
-        />
+        <div className="min-w-[300px] md:min-w-0 flex-1">
+          <BoardColumn
+            title="Research"
+            ideas={filteredIdeas.filter(
+              (idea) => idea.status === "Research"
+            )}
+            onDelete={deleteIdea}
+            onEdit={editIdea}
+            onVote={voteIdea}
+          />
+        </div>
 
-        <BoardColumn
-          title="Finalists"
-          ideas={filteredIdeas.filter(
-            (idea) => idea.status === "Finalists"
-          )}
-          onDelete={deleteIdea}
-          onEdit={editIdea}
-          onVote={voteIdea}
-        />
+        <div className="min-w-[300px] md:min-w-0 flex-1">
+          <BoardColumn
+            title="Finalists"
+            ideas={filteredIdeas.filter(
+              (idea) => idea.status === "Finalists"
+            )}
+            onDelete={deleteIdea}
+            onEdit={editIdea}
+            onVote={voteIdea}
+          />
+        </div>
       </div>
 
       {showModal && (
@@ -158,7 +165,7 @@ useEffect(() => {
           editingIdea={editingIdea}
         />
       )}
-    </>
+    </div>
   );
 }
 
