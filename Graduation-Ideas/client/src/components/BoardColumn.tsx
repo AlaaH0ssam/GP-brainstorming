@@ -17,14 +17,14 @@ function BoardColumn({
   onVote,
 }: Props) {
   return (
-    <div className="rounded-xl bg-gray-200 p-5">
-      <h2 className="mb-5 text-center text-xl font-bold">
+    <div className="rounded-xl bg-gray-900 border border-gray-800 p-5 shadow-lg">
+      <h2 className="mb-5 text-center text-xl font-bold text-white">
         {title}
       </h2>
 
       <div className="space-y-4">
         {ideas.length === 0 ? (
-          <div className="rounded-lg border-2 border-dashed border-gray-400 p-6 text-center text-gray-500">
+          <div className="rounded-lg border-2 border-dashed border-gray-700 p-6 text-center text-gray-500 bg-gray-950/40">
             No Ideas
           </div>
         ) : (
@@ -34,8 +34,7 @@ function BoardColumn({
               idea={idea}
               onDelete={onDelete}
               onEdit={onEdit}
-                onVote={onVote}
-              
+              onVote={onVote}
             />
           ))
         )}

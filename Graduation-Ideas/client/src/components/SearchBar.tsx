@@ -11,7 +11,7 @@ function SearchBar({ search, setSearch }: Props) {
         placeholder="Search by title..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="w-full rounded-xl border border-gray-300 bg-white p-4 shadow outline-none"
+        className="w-full rounded-xl border border-gray-800 bg-gray-900 p-4 text-white placeholder-gray-500 shadow-lg outline-none focus:border-blue-500 transition-colors"
       />
     </div>
   );
