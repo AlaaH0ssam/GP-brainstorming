@@ -4,8 +4,10 @@ const path = require("path");
 const db = require("./database");
 
 const app = express();
-
-app.use(cors());
+app.use(cors({
+  origin: 'https://gp-brainstorming-vkhc.vercel.app',
+  credentials: true
+}));
 app.use(express.json());
 
 app.get("/ideas", (req, res) => {
