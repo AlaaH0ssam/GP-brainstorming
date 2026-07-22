@@ -3,5 +3,8 @@
     "version": "1.0.0",
     "scripts": {
         "build": "npm --prefix Graduation-Ideas/client install && npm --prefix Graduation-Ideas/client run build"
+    },
+    "engines": {
+        "node": ">=20.0.0"
     }
 }
