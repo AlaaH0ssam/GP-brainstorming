@@ -5,7 +5,7 @@
     "watchPatterns": ["Graduation-Ideas/client/**"]
   },
   "deploy": {
-    "startCommand": "npm run start",
+    "startCommand": "npm --prefix Graduation-Ideas/client run preview -- --host 0.0.0.0 --port $PORT",
     "numReplicas": 1
   }
 }
