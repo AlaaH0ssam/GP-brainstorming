@@ -4,6 +4,6 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "cd Graduation-Ideas/server && npm install && npm start"
+    "startCommand": "cd Graduation-Ideas/server && npm start"
   }
 }
