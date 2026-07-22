@@ -28,6 +28,11 @@ app.post("/ideas", (req, res) => {
 
       res.json({
         id: this.lastID,
+        title,
+        description,
+        status,
+        votes: 0,
+        notes: "",
       });
     }
   );
@@ -89,21 +94,7 @@ app.patch("/ideas/:id/vote", (req, res) => {
   );
 });
 
-app.patch("/ideas/:id/vote", (req, res) => {
-  db.run(
-    `UPDATE ideas
-     SET votes = votes + 1
-     WHERE id = ?`,
-    [req.params.id],
-    function (err) {
-      if (err) return res.status(500).json(err);
 
-      res.json({
-        message: "Vote Added",
-      });
-    }
-  );
-});
 
 app.listen(5000, () => {
   console.log("Server Running...");

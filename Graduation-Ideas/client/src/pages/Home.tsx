@@ -42,9 +42,9 @@ function Home() {
 
   async function voteIdea(id: number) {
     try {
-      await fetch(`http://localhost:5000/ideas/${id}/vote`, {
-        method: "PUT",
-      });
+     await fetch(`http://localhost:5000/ideas/${id}/vote`, {
+  method: "PATCH",
+});
 
       setAllIdeas((ideas) =>
         ideas.map((idea) =>
