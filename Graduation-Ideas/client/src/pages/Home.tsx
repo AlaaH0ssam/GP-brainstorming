@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import api from "../api/ideas";
 
 import SearchBar from "../components/SearchBar";
 import BoardColumn from "../components/BoardColumn";
@@ -12,10 +13,9 @@ function Home() {
   const [search, setSearch] = useState("");
   const [editingIdea, setEditingIdea] = useState<Idea | null>(null);
 
-  useEffect(() => {
-    fetch("/ideas")
-      .then((res) => res.json())
-      .then((data) => setAllIdeas(data))
+useEffect(() => {
+    api.get("/ideas")
+      .then((res) => setAllIdeas(res.data))
       .catch((err) => console.log(err));
   }, []);
 
@@ -26,9 +26,7 @@ function Home() {
 
     if (!confirmDelete) return;
 
-    await fetch(`/ideas/${id}`, {
-      method: "DELETE",
-    });
+    await api.delete(`/ideas/${id}`);
 
     setAllIdeas((ideas) =>
       ideas.filter((idea) => idea.id !== id)
@@ -42,9 +40,7 @@ function Home() {
 
   async function voteIdea(id: number) {
     try {
-     await fetch(`/ideas/${id}/vote`, {
-  method: "PATCH",
-});
+      await api.patch(`/ideas/${id}/vote`);
 
       setAllIdeas((ideas) =>
         ideas.map((idea) =>
@@ -68,27 +64,12 @@ function Home() {
   }) {
     // Edit
     if (editingIdea) {
-      await fetch(
-        `/ideas/${editingIdea.id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await api.put(`/ideas/${editingIdea.id}`, data);
+      const updatedIdea = response.data;
 
       setAllIdeas((ideas) =>
         ideas.map((idea) =>
-          idea.id === editingIdea.id
-            ? {
-                ...idea,
-                title: data.title,
-                description: data.description,
-                status: data.status,
-              }
-            : idea
+          idea.id === editingIdea.id ? updatedIdea : idea
         )
       );
 
@@ -97,8 +78,7 @@ function Home() {
     }
 
     // Add
-    const newIdea: Idea = {
-      id: Date.now(),
+    const newIdea = {
       title: data.title,
       description: data.description,
       status: data.status,
@@ -106,18 +86,8 @@ function Home() {
       notes: "",
     };
 
-    const response = await fetch(
-      "/ideas",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newIdea),
-      }
-    );
-
-    const savedIdea = await response.json();
+    const response = await api.post("/ideas", newIdea);
+    const savedIdea = response.data;
 
     setAllIdeas((ideas) => [savedIdea, ...ideas]);
   }
