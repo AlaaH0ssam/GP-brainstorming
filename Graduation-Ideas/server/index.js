@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-
+const path = require("path");
 const db = require("./database");
 
 const app = express();
@@ -93,9 +93,14 @@ app.patch("/ideas/:id/vote", (req, res) => {
     }
   );
 });
+app.use(express.static(path.join(__dirname, "../client/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
+});
 
 
-
-app.listen(5000, () => {
-  console.log("Server Running...");
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server Running on port ${PORT}...`);
 });

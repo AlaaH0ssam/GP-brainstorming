@@ -13,7 +13,7 @@ function Home() {
   const [editingIdea, setEditingIdea] = useState<Idea | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/ideas")
+    fetch("/ideas")
       .then((res) => res.json())
       .then((data) => setAllIdeas(data))
       .catch((err) => console.log(err));
@@ -26,7 +26,7 @@ function Home() {
 
     if (!confirmDelete) return;
 
-    await fetch(`http://localhost:5000/ideas/${id}`, {
+    await fetch(`/ideas/${id}`, {
       method: "DELETE",
     });
 
@@ -42,7 +42,7 @@ function Home() {
 
   async function voteIdea(id: number) {
     try {
-     await fetch(`http://localhost:5000/ideas/${id}/vote`, {
+     await fetch(`/ideas/${id}/vote`, {
   method: "PATCH",
 });
 
@@ -69,7 +69,7 @@ function Home() {
     // Edit
     if (editingIdea) {
       await fetch(
-        `http://localhost:5000/ideas/${editingIdea.id}`,
+        `/ideas/${editingIdea.id}`,
         {
           method: "PUT",
           headers: {
@@ -107,7 +107,7 @@ function Home() {
     };
 
     const response = await fetch(
-      "http://localhost:5000/ideas",
+      "/ideas",
       {
         method: "POST",
         headers: {
