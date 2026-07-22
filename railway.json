@@ -1,6 +1,11 @@
 {
   "$schema": "https://railway.app/railway.schema.json",
   "build": {
-    "rootDirectory": "Graduation-Ideas/server"
+    "builder": "NIXPACKS",
+    "watchPatterns": ["Graduation-Ideas/client/**"]
+  },
+  "deploy": {
+    "startCommand": "npm run start",
+    "numReplicas": 1
   }
 }
