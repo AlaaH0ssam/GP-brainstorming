@@ -7,7 +7,6 @@ export const ideas: Idea[] = [
     status: "Inbox",
       votes: 0,
   notes: "",
-  likedBy: [],
   },
   {
     id: 2,
@@ -16,7 +15,6 @@ export const ideas: Idea[] = [
     status: "Research",
       votes: 0,
   notes: "",
-  likedBy: [],
   },
   {
     id: 3,
@@ -25,6 +23,5 @@ export const ideas: Idea[] = [
     status: "Finalists",
       votes: 0,
   notes: "",
-  likedBy: [],
   },
 ];
