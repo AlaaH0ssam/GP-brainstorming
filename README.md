@@ -1,5 +1,3 @@
-# GP-brainstorming
-
 # Graduation Project Brainstorming App
 
 A modern, full-stack web application designed for computer science students and teams to brainstorm, organize, and track graduation project ideas collaboratively. Featuring a responsive Kanban board interface, real-time search, voting, and a sleek dark mode UI.
@@ -66,9 +64,12 @@ npm run dev
 cd server
 npm run start
 ```
---
-## 🌐 Live Demo
-Frontend: Hosted on Vercel:  [Vercel Live Link](https://gp-brainstorming-f2lq.vercel.app)
 
-Backend: Hosted on [Railway]
---
+---
+
+## 🌐 Live Deployment
+* **Frontend:** Hosted on Vercel: [Vercel Live Link](https://gp-brainstorming-f2lq.vercel.app)
+* **Backend:** Hosted on Railway
+
+---
+
