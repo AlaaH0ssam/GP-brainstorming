@@ -2,7 +2,8 @@
     "name": "gp-brainstorming-root",
     "version": "1.0.0",
     "scripts": {
-        "build": "npm --prefix Graduation-Ideas/client install && npm --prefix Graduation-Ideas/client run build"
+        "install-server": "npm --prefix Graduation-Ideas/server install",
+        "build": "npm --prefix Graduation-Ideas/client install && npm --prefix Graduation-Ideas/client run build && npm run install-server"
     },
     "engines": {
         "node": ">=20.0.0"
