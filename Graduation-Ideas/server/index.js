@@ -5,7 +5,7 @@ const db = require("./database");
 
 const app = express();
 app.use(cors({
-  origin: 'https://gp-brainstorming-vkhc.vercel.app',
+  origin: true, 
   credentials: true
 }));
 app.use(express.json());
